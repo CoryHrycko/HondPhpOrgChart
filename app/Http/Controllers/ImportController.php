@@ -60,4 +60,9 @@ public function index()
 
     return view('import', ['FirstName' => $FirstName]);
 }
+
+    public function insert()
+    {
+        $insert = DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?)',[]);
+    }
 }

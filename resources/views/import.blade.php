@@ -47,9 +47,11 @@
                     </div>
 
                     <?php
+                    echo "<tr>";
                     foreach ($FirstName as $user) {
-                        echo"<tr> $user->FirstName </tr>";
+                        echo"<td> $user->FirstName </td>";
                     }
+                    echo "</tr>"
                     ?>
                 </div>
             </div>

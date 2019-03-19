@@ -39,7 +39,7 @@ Route::match(['get','post'],'/demo', function () {
 //    mysqli->query('DROP TABLE IF EXISTS `dbName`.`tableName`') or die(mysqli_error($finalData));
 //} );
 
-Route::get('/', 'ImportController@getImport')->name('import');
+//Route::get('/', 'ImportController@getImport')->name('index');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');
-Route::match(['get','post'], '/test', 'ImportController@index')->name ('index');
+Route::match(['get','post'],'/', 'ImportController@index')->name ('index');
