@@ -63,6 +63,10 @@ public function index()
 
     public function insert()
     {
-        $insert = DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?)',[]);
+        DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?,?,?,?)',[20,"Jimmy","Kudo","Mower",1]);
+
+        $FirstName = DB::select('select FirstName from csv_data', [1]);
+
+        return view('import', ['FirstName' => $FirstName]);
     }
 }

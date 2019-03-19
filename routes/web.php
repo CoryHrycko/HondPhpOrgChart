@@ -43,3 +43,4 @@ Route::match(['get','post'],'/demo', function () {
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');
 Route::match(['get','post'],'/', 'ImportController@index')->name ('index');
+Route::match(['get','post'],'/insert', 'ImportController@insert')->name ('insert');

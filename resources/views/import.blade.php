@@ -6,9 +6,16 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">CSV Import</div>
-
+                    <p>This works only if the following columns are in this order</p>
+                    <ul>
+                        <li>Employee Id</li>
+                        <li>First Name</li>
+                        <li>Last Name</li>
+                        <li>Title</li>
+                        <li>Manager Id</li>
+                    </ul>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('insert') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
