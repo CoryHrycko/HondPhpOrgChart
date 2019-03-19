@@ -55,7 +55,7 @@
                         if (isset($_FILES['file'])) {
 echo '<pre>';
 var_dump($_REQUEST['file']);
-echo '</pre>'; 
+echo '</pre>';
 }
 ?>
 

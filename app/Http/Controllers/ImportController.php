@@ -61,15 +61,31 @@ public function index()
     return view('import', ['FirstName' => $FirstName]);
 }
 
-    public function insert()
+    public function insert($request)
     {
+        if (($handle = fopen ( CsvData::find($request->csv_data_file_id), 'r' )) !== FALSE) {
+            while ( ($data = fgetcsv ( $handle, 1000, ',' )) !== FALSE ) {
 
-
-
-
-        if (isset($_FILES['file'])) {
-            DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?,?,?,?)', ($_FILES['file']));
+                //saving to db logic goes here
+                $csv_data = new Csvdata ();
+                $csv_data->EmployeeId = $data [0];
+                $csv_data->FirstName = $data [1];
+                $csv_data->LastName = $data [2];
+                $csv_data->Title = $data [3];
+                $csv_data->ManagerId = $data [4];
+                $csv_data->save ();
+            }
+            fclose ( $handle );
         }
+        $finalData = $csv_data::all ();
+
+
+        DB::table('csv_data')->insert([
+            [ 'EmployeeId' => $finalData[0], 'FirstName' => $finalData[1], 'LastName' => $finalData[2]], 'Title' => $finalData[3],'ManagerId'=>$finalData[4]
+        ]);
+
+            DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?,?,?,?)', ($_FILES['file']));
+
 
         $FirstName = DB::select('select FirstName from csv_data', [1]);
 
