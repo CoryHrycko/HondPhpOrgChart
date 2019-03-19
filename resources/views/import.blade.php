@@ -50,6 +50,15 @@
                                 </div>
                             </div>
                         </form>
+
+                    <?php
+                        if (isset($_FILES['file'])) {
+echo '<pre>';
+var_dump($_REQUEST['file']);
+echo '</pre>';
+}
+?>
+
                         <p>This sectional link is a demo showcassing if you place the file directly into the public folder with the name DATA.csv</p>
                         <a href="/demo">Demo</a>
                     </div>
