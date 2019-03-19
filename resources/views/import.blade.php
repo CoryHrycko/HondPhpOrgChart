@@ -22,7 +22,7 @@
                                 <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
 
                                 <div class="col-md-6">
-                                    <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+                                    <input id="csv_file" type="file" class="form-control" name="file" required>
 
                                     @if ($errors->has('csv_file'))
                                         <span class="help-block">

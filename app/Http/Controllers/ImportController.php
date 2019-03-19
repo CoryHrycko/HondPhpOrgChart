@@ -67,8 +67,9 @@ public function index()
 
 
 
-
-        DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?,?,?,?)',[$_POST["csv_file"]]);
+        if (isset($_FILES['file'])) {
+            DB::insert('insert into csv_data(EmployeeId,FirstName,LastName,Title,ManagerId) values (?,?,?,?,?)', ($_FILES['file']));
+        }
 
         $FirstName = DB::select('select FirstName from csv_data', [1]);
 
