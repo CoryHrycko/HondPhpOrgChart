@@ -38,9 +38,9 @@ Route::match(['get','post'],'/demo', function () {
 //    $finalData = 0;
 //    mysqli->query('DROP TABLE IF EXISTS `dbName`.`tableName`') or die(mysqli_error($finalData));
 //} );
-
 //Route::get('/', 'ImportController@getImport')->name('index');
+Route::get('/', 'ImportController@getImport')->name('import');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');
-Route::match(['get','post'],'/', 'ImportController@index')->name ('index');
-Route::match(['get','post'],'/insert', 'ImportController@insert')->name ('insert');
+//Route::match(['get','post'],'/', 'ImportController@index')->name ('index');
+Route::match(['get','post'],'/import', 'ImportController@import')->name ('index');

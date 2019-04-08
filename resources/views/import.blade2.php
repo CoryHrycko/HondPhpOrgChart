@@ -6,16 +6,23 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">CSV Import</div>
-
+                    <p>This works only if the following columns are in this order</p>
+                    <ul>
+                        <li>Employee Id</li>
+                        <li>First Name</li>
+                        <li>Last Name</li>
+                        <li>Title</li>
+                        <li>Manager Id</li>
+                    </ul>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('insert') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
                                 <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
 
                                 <div class="col-md-6">
-                                    <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+                                    <input id="csv_file" type="file" class="form-control" name="request" required>
 
                                     @if ($errors->has('csv_file'))
                                         <span class="help-block">
@@ -43,7 +50,26 @@
                                 </div>
                             </div>
                         </form>
+
+                    <?php
+                        if (isset($_FILES['file'])) {
+echo '<pre>';
+var_dump($_REQUEST['file']);
+echo '</pre>';
+}
+?>
+
+                        <p>This sectional link is a demo showcassing if you place the file directly into the public folder with the name DATA.csv</p>
+                        <a href="/demo">Demo</a>
                     </div>
+                    <p>Bellow is the testing demo to make sure the journey can start</p>
+                    <?php
+                    echo "<tr>";
+                    foreach ($FirstName as $user) {
+                        echo"<td> $user->FirstName </td>";
+                    }
+                    echo "</tr>"
+                    ?>
                 </div>
             </div>
         </div>
